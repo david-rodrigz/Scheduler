@@ -40,7 +40,24 @@ const updateCalendar = () => {
     }
 
     datesElement.innerHTML = datesHtml;
-}
+};
+
+const populateOpenSlots = () => {
+    const schedulingContainer = document.getElementById('scheduling');
+    let slotsHtml = '';
+    for (let i = 0; i < 24; i++) {
+        slotsHtml += `<div class="slot">${i}:00</div>`;
+    }
+    schedulingContainer.innerHTML = slotsHtml;
+};
+
+const setSchedulerHeight = () => {
+    const calendar = document.getElementById('calendar');
+    const scheduler = document.getElementById('scheduler');
+
+    let calendarHeight = calendar.offsetHeight;
+    scheduler.style.height = `${calendarHeight}px`;
+};
 
 prevBtn.addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
@@ -53,3 +70,5 @@ nextBtn.addEventListener('click', () => {
 });
 
 updateCalendar();
+setSchedulerHeight();
+populateOpenSlots();
