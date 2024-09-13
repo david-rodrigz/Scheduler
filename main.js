@@ -12,7 +12,7 @@ const updateCalendar = () => {
     const firstDate = new Date(currentYear, currentMonth, 0);
     const lastDate = new Date(currentYear, currentMonth + 1, 0);
     const totalDays = lastDate.getDate();
-    const firstDayIndex = firstDate.getDay() + 1;
+    const firstDayIndex = (firstDate.getDay() + 1) % 7;
     const lastDayIndex = lastDate.getDay() + 1;
 
     const monthYearString = currentDate.toLocaleString('default', {month: 'long', year: 'numeric'});
@@ -22,7 +22,7 @@ const updateCalendar = () => {
 
     // Loop to add the dates of the previous month that appear in the current month's calendar view
     for (let i = firstDayIndex; i > 0; i--) {
-        const prevDate = new Date(currentYear, currentMonth, 0 - i + 1);
+        const prevDate = new Date(currentYear, currentMonth, 1 - i);
         datesHtml += `<div class="date inactive">${prevDate.getDate()}</div>`;
     }
     
