@@ -1,6 +1,8 @@
 const monthYear = document.getElementById('monthYear');
 const dayHeading = document.getElementById('dayHeading');
 const datesElement = document.getElementById('dates');
+
+// buttons
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 
@@ -26,31 +28,25 @@ const updateCalendar = () => {
 
     // Loop to add the dates of the previous month that appear in the current month's calendar view
     for (let i = firstDayIndex; i > 0; i--) {
-        const prevDate = new Date(currentYear, currentMonth, 1 - i);
-        // datesHtml += `<div class="date inactive">${prevDate.getDate()}</div>`;
         datesHtml += `<div></div>`;
     }
     
     // Loop to add the dates of the current month
     for (let i = 1; i <= totalDays; i++) {
         const date = new Date(currentYear, currentMonth, i);
-        // const activeClass = date.toDateString() === new Date().toDateString() ? 'active' : '';
-        // datesHtml += `<div class="date ${activeClass}">${i}</div>`;
         if (date.toDateString() === new Date().toDateString()) {
             datesHtml += `
-                <div class="date active">
+                <button class="date active">
                     <span>${i}</span>
                     <div class="today-marker"></div>
-                </div>`;
+                </button>`;
             continue;
         }
-        datesHtml += `<div class="date">${i}</div>`;
+        datesHtml += `<button class="date">${i}</button>`;
     }
 
     // Loop to add the dates of the next month that appear in the current month's calendar view
     for (let i = 1; i <= 7 - lastDayIndex; i++) {
-        const nextDate = new Date(currentYear, currentMonth + 1, i);
-        // datesHtml += `<div class="date inactive">${nextDate.getDate()}</div>`;
         datesHtml += `<div></div>`;
     }
 
@@ -61,7 +57,7 @@ const populateOpenSlots = () => {
     const slotsContainer = document.getElementById('slotsContainer');
     let slotsHtml = '';
     for (let i = 0; i < 24; i++) {
-        slotsHtml += `<div class="slot">${i}:00_m</div>`;
+        slotsHtml += `<button class="slot">${i}:00_m</button>`;
     }
     slotsContainer.innerHTML = slotsHtml;
 };
