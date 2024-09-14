@@ -11,60 +11,87 @@ body {
     background-color: slategray;
 }
 
-.scheduler {
-    display: flex;
-    background-color: #fff;
-    width: fit-content;
-    padding: 10px;
+h1 {
+    font-size: 20px;
+    font-weight: 500;
 }
 
-.scheduling {
+h2 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.scheduler {
+    background-color: #fff;
+    width: fit-content;
+    padding: 28px 28px 0 28px;
+}
+
+.scheduler-header {
+    padding-bottom: 28px;
+}
+
+.calendar-header, 
+.open-slots-header {
+    padding-bottom: 20px;
+}
+
+.open-slots-header,
+.slots-container {
+    padding-left: 40px;
+}
+
+.scheduler-body {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+}
+
+.slots-container {
     display: flex;
     flex-direction: column;
-    padding-left: 36px;
-    padding-right: 36px;
     overflow-y: scroll;
+    padding-bottom: 26px;
 }
 
 .slot {
+    cursor: pointer;
     text-align: center;
     color: darkcyan;
-    margin: 4px 0;
-    padding: 10px 64px;
-    border: 1px solid darkcyan;
+    margin: 5px 0;
+    padding: 14px 90px;
+    border: 2px solid rgb(0, 139, 139, 0.4);
     border-radius: 4px;
 }
 
 .calendar {
-    min-width: 380px;
+    min-width: 360px;
     height: auto;
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
-    background-color: #fff;
+    padding-bottom: 26px;
 }
 
-.header {
+.calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
 }
 
-.monthYear {
-    text-align: center;
-    font-weight: 400;
-    width: 150px;
-}
-
-.header button {
+.calendar-header button {
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     background-color: #fff;
     cursor: pointer;
-    padding: 0 14px;
+    padding: 0 18px;
+}
+
+.fa-chevron-left,
+.fa-chevron-right {
+    color: darkcyan;
+    font-size: 16px;
 }
 
 .monthBtns {
@@ -74,6 +101,7 @@ body {
 .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 15px 3px;
 }
 
 .day {
@@ -81,12 +109,13 @@ body {
     padding: 5px;
     color: #999FA6;
     font-weight: 500;
+    font-size: 14px;
 }
 
 .dates {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
+    gap: 15px 3px;
 }
 
 .date {
@@ -104,6 +133,7 @@ body {
     transition: 0.2s;
 }
 
+.date:hover,
 .date.active {
     background-color: #ff5865;
     color: #fff;
@@ -111,4 +141,8 @@ body {
 
 .date.inactive {
     color: #d2d2d2;
+}
+
+.date.inactive {
+    color: #fff;
 }

@@ -8,10 +8,13 @@
     <title>Calendar</title>
 </head>
 <body>
-    <div class="scheduler" id="scheduler">
-        <div class="calendar" id="calendar">
-            <div class="header">
-                <div class="monthYear" id="monthYear"></div>
+    <div class="scheduler">
+        <div class="scheduler-header">
+            <h1>Select a Date &amp; Time</h1>
+        </div>
+        <div class="scheduler-body">
+            <div class="calendar-header">
+                <h2 class="monthYear" id="monthYear"></h2>
                 <div class="monthBtns">
                     <button id="prevBtn" >
                         <i class="fa-solid fa-chevron-left"></i>
@@ -21,18 +24,23 @@
                     </button>
                 </div>
             </div>
-            <div class="days">
-                <div class="day">Sun</div>
-                <div class="day">Mon</div>
-                <div class="day">Tue</div>
-                <div class="day">Wed</div>
-                <div class="day">Thu</div>
-                <div class="day">Fri</div>
-                <div class="day">Sat</div>
+            <div class="open-slots-header">
+                <h2 class="day-heading" id="dayHeading"></h2>
             </div>
-            <div class="dates" id="dates"></div>
+            <div class="calendar" id="calendar">
+                <div class="days">
+                    <div class="day">Sun</div>
+                    <div class="day">Mon</div>
+                    <div class="day">Tue</div>
+                    <div class="day">Wed</div>
+                    <div class="day">Thu</div>
+                    <div class="day">Fri</div>
+                    <div class="day">Sat</div>
+                </div>
+                <div class="dates" id="dates"></div>
+            </div>
+            <div class="slots-container" id="slotsContainer">
         </div>
-        <div class="scheduling" id="scheduling"></div>
     </div>
     <script src="main.js"></script>
 </body>

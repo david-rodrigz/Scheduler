@@ -1,4 +1,5 @@
 const monthYear = document.getElementById('monthYear');
+const dayHeading = document.getElementById('dayHeading');
 const datesElement = document.getElementById('dates');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -18,12 +19,16 @@ const updateCalendar = () => {
     const monthYearString = currentDate.toLocaleString('default', {month: 'long', year: 'numeric'});
     monthYear.textContent = monthYearString;
 
+    const dayHeadingString = currentDate.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric'});
+    dayHeading.textContent = dayHeadingString;
+
     let datesHtml = '';
 
     // Loop to add the dates of the previous month that appear in the current month's calendar view
     for (let i = firstDayIndex; i > 0; i--) {
         const prevDate = new Date(currentYear, currentMonth, 1 - i);
-        datesHtml += `<div class="date inactive">${prevDate.getDate()}</div>`;
+        // datesHtml += `<div class="date inactive">${prevDate.getDate()}</div>`;
+        datesHtml += `<div></div>`;
     }
     
     // Loop to add the dates of the current month
@@ -36,27 +41,28 @@ const updateCalendar = () => {
     // Loop to add the dates of the next month that appear in the current month's calendar view
     for (let i = 1; i <= 7 - lastDayIndex; i++) {
         const nextDate = new Date(currentYear, currentMonth + 1, i);
-        datesHtml += `<div class="date inactive">${nextDate.getDate()}</div>`;
+        // datesHtml += `<div class="date inactive">${nextDate.getDate()}</div>`;
+        datesHtml += `<div></div>`;
     }
 
     datesElement.innerHTML = datesHtml;
 };
 
 const populateOpenSlots = () => {
-    const schedulingContainer = document.getElementById('scheduling');
+    const slotsContainer = document.getElementById('slotsContainer');
     let slotsHtml = '';
     for (let i = 0; i < 24; i++) {
-        slotsHtml += `<div class="slot">${i}:00</div>`;
+        slotsHtml += `<div class="slot">${i}:00_m</div>`;
     }
-    schedulingContainer.innerHTML = slotsHtml;
+    slotsContainer.innerHTML = slotsHtml;
 };
 
 const setSchedulerHeight = () => {
     const calendar = document.getElementById('calendar');
-    const scheduler = document.getElementById('scheduler');
+    const slotsContainer = document.getElementById('slotsContainer');
 
     let calendarHeight = calendar.offsetHeight;
-    scheduler.style.height = `${calendarHeight}px`;
+    slotsContainer.style.height = `${calendarHeight}px`;
 };
 
 prevBtn.addEventListener('click', () => {
