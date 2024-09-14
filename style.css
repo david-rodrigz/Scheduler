@@ -133,6 +133,15 @@ h2 {
     transition: 0.2s;
 }
 
+.today-marker {
+    background-color: darkcyan;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    position: absolute;
+    margin-top: 24px;
+}
+
 .date:hover,
 .date.active {
     background-color: #ff5865;

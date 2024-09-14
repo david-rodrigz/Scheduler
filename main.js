@@ -34,8 +34,17 @@ const updateCalendar = () => {
     // Loop to add the dates of the current month
     for (let i = 1; i <= totalDays; i++) {
         const date = new Date(currentYear, currentMonth, i);
-        const activeClass = date.toDateString() === new Date().toDateString() ? 'active' : '';
-        datesHtml += `<div class="date ${activeClass}">${i}</div>`;
+        // const activeClass = date.toDateString() === new Date().toDateString() ? 'active' : '';
+        // datesHtml += `<div class="date ${activeClass}">${i}</div>`;
+        if (date.toDateString() === new Date().toDateString()) {
+            datesHtml += `
+                <div class="date active">
+                    <span>${i}</span>
+                    <div class="today-marker"></div>
+                </div>`;
+            continue;
+        }
+        datesHtml += `<div class="date">${i}</div>`;
     }
 
     // Loop to add the dates of the next month that appear in the current month's calendar view
